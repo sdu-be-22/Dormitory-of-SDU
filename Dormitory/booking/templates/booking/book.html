@@ -1,0 +1,59 @@
+{% extends 'booking/base.html' %}
+{% block title %}
+Booking
+{% endblock %}
+{% block name %}Book Room{% endblock %}
+{% block active1 %}class="nav-link"{% endblock %}
+{% block active2 %}class="nav-link"{% endblock %}
+{% block active3 %}class="nav-link active"{% endblock %}
+{% block style %}style="background: #49beb6; height: 350px;"{% endblock %}
+{% block top %}style="margin-top=100px;font-size: 60px;color: #fff;"{% endblock %}
+{% block content %}
+<div class="container-book container" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-3 text-center bg-light rounded-3 overflow-auto" style="max-height: 395px">
+            <h3>Free room numbers</h3>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                {% for room in rooms %}
+                    {% if room.available %}
+                        <p style="font-size: 17px; padding-top: 15px;">{{ room }}</p>
+                    {% endif %}
+                {% endfor %}
+            </form>
+
+
+
+        </div>
+        <div class="col-4">
+            <div class="card mb-3 bg-light rounded-3" style="max-width: 840px;">
+                <div class="col-md">
+                    <div class="card-body text-center">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <div class="col-md" style="padding: 15px;">
+                           <input type="text" name="room_number" placeholder="Room number..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="floor" placeholder="Floor number..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="block" placeholder="Block name..." class="form-control text-center">
+                        </div>
+                            <div class="col-md" style="padding: 15px;">
+                            <input type="file" name="check" placeholder="Check..." class="form-control text-center">
+                        </div>
+                            <button style="margin: 25px;" class="btn btn-danger rounded-pill" type="submit">Book</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'booking/base.html' %}
+{% block title %}
+Main page
+{% endblock %}
+{% block button %}
+<div class="row align-items-center" style="margin-top: 50px;">
+    <div class="col-10"></div>
+    <div class="col-2">
+        {% if not request.user.is_staff %}
+            <a href="{% url 'book' %}" class="btn btn-danger rounded-pill">Booking now</a>
+        {% else %}
+            <a href="{% url 'home' %}" class="btn btn-danger rounded-pill">Booking now</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block information %}
+    <div class="row" style="margin-top: 100px;">
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="total-rooms">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Total Rooms</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ total_rooms }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="total-rooms-boy">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Total Rooms Boy</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ boys_room }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="total-rooms-girl">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Total Rooms Girl</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ girls_room }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block name %}SDU Dormitory{% endblock %}
+{% block active1 %}class="nav-link active"{% endblock %}
+{% block active2 %}class="nav-link"{% endblock %}
+{% block active3 %}class="nav-link"{% endblock %}
+{% block style %}style="background: #49beb6; height: 700px;"{% endblock %}
+{% block top %}style="margin-top=200px;font-size: 60px;color: #fff;"{% endblock %}
+{% block content %}
+<div class="container rooms" id="rooms" style="margin-top: 100px;">
+        <div class="row">
+          <div class="col">
+            <h1 class="text-center">Rooms</h1>
+            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate adipisci eligendi nam iste voluptas quibusdam accusamus ut aliquam obcaecati, et omnis autem quo rerum fugit dolorum aliquid? Ipsa, autem culpa.</p>
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Chilling room</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Canteen</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Gym</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Cinema room</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Studying room</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Activity room</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-around">
+            <div class="card" style="width: 30rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="col">
+                  <h5 class="card-title text-center">Boys room</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    {% if not request.user.is_staff %}
+                        <a href="{% url 'book' %}" class="btn  rounded-pill" style="background: #ff5959; color: #fff;">Booking now</a>
+                    {% else %}
+                        <a href="{% url 'home' %}" class="btn rounded-pill" style="background: #ff5959; color: #fff;">Booking now</a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="card" style="width: 30rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="col">
+                  <h5 class="card-title text-center">Girls room</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    {% if not request.user.is_staff %}
+                        <a href="{% url 'book' %}" class="btn rounded-pill" style="background: #ff5959; color: #fff;">Booking now</a>
+                    {% else %}
+                        <a href="{% url 'home' %}" class="btn rounded-pill" style="background: #ff5959; color: #fff;">Booking now</a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Home Page</h1>-->
+<!--    <span>Hello, {{ request.user }}</span>-->
+<!--    <span><a href="{% url 'logout' %}">Logout</a></span>-->
+<!--</body>-->
+<!--</html>-->

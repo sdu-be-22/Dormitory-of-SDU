@@ -1,0 +1,84 @@
+{% extends 'booking/base.html' %}
+{% block title %}
+Booking List
+{% endblock %}
+{% block name %}
+<div class="row">
+    Booking List
+</div>
+<div class="row">
+    <div class="col-4">
+        <a class="btn btn-danger" href="{% url 'profile' %}">
+                    &#8592; Back to profile</a>
+    </div>
+</div>{% endblock %}
+{% block active1 %}class="nav-link"{% endblock %}
+{% block active2 %}class="nav-link"{% endblock %}
+{% block active3 %}class="nav-link"{% endblock %}
+{% block style %}style="background: #49beb6; height: 350px;"{% endblock %}
+{% block top %}style="margin-top=100px;font-size: 60px;color: #fff;"{% endblock %}
+{% block content %}
+<style>
+    .con{
+        margin: 90px 120px 0 120px;
+    }
+    table, th, td {
+        font-size: 18px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+<div class="container con text-center">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-8">
+            <table>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Room number</th>
+                <th>Floor number</th>
+                <th>Block name</th>
+                  <th>Check file</th>
+              </tr>
+                {% if request.user.is_staff %}
+                    {% for book in book_list %}
+                      <tr>
+                        <td>{{ book.user.first_name }}</td>
+                        <td>{{ book.user.last_name }}</td>
+                        <td>{{ book.room.room_number }}</td>
+                        <td>{{ book.room.floor }}</td>
+                        <td>{{ book.room.block }}</td>
+                          <td><a href="{{ book.check_file.url }}">{{ book.check_file }}</a></td>
+
+                      </tr>
+                    {% endfor %}
+                {% else %}
+                    {% for book in book_list %}
+                        {% if book.user == request.user %}
+                            <tr>
+                                <td>{{ book.user.first_name }}</td>
+                                <td>{{ book.user.last_name }}</td>
+                                <td>{{ book.room.room_number }}</td>
+                                <td>{{ book.room.floor }}</td>
+                                <td>{{ book.room.block }}</td>
+                                <td><a href="{{ book.check_file.url }}">{{ book.check_file }}</a></td>
+                              </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+        {% if not request.user.is_staff %}
+        <div class="col-1">
+            <form method="post">
+                {% csrf_token %}
+                <input name="cancel" class="btn btn-danger rounded-pill text-center " type="submit" value="Cancel">
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'booking/base.html' %}
+{% block title %}
+Profile
+{% endblock %}
+{% block name %}Profile{% endblock %}
+{% block active1 %}class="nav-link"{% endblock %}
+{% block active2 %}class="nav-link"{% endblock %}
+{% block active3 %}class="nav-link"{% endblock %}
+{% block style %}style="background: #49beb6; height: 350px;"{% endblock %}
+{% block top %}style="margin-top=100px;font-size: 60px;color: #fff;"{% endblock %}
+{% block information %}
+    <h3 class="text-center" style="margin-top: 50px;"><img style="padding-bottom: 5px; margin-right: 10px;" src="https://www.svgrepo.com/show/333287/profile.svg">{{ user.first_name }} {{ user.last_name }}</h3>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 100px;">
+        {% if not request.user.is_staff %}
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="edit">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Edit accounts</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a style="text-decoration: None;" href="{% url 'account_settings' %}">Edit</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3"  id="history">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Booking History</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a style="text-decoration: None;" href="{% url 'booking_list' %}">Show</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if request.user.is_staff %}
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="add">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Add room</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a style="text-decoration: None;" href="{% url 'add_room' %}">Add</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if request.user.is_staff %}
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-dark mb-3" id="rooms">
+                    <div class="card-header" style="background: #fad05a;">
+                        <h5 class="card-title">Room list</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a style="text-decoration: None;" href="{% url 'room_list' %}">Show</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'booking/base.html' %}
+{% block title %}
+Add a room
+{% endblock %}
+{% block name %}Add a room{% endblock %}
+{% block active1 %}class="nav-link"{% endblock %}
+{% block active2 %}class="nav-link"{% endblock %}
+{% block active3 %}class="nav-link"{% endblock %}
+{% block style %}style="background: #49beb6; height: 350px;"{% endblock %}
+{% block top %}style="margin-top=100px;font-size: 60px;color: #fff;"{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 35px;">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+                <div class="card card-body">
+                    <a class="btn btn-danger" href="{% url 'profile' %}">
+                        &#8592; Back to profile</a>
+                    <hr>
+                    <h3 style="text-align: center">Add or Delete</h3>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-5 ">
+                <div class="card card-body" style="max-width: 400px;">
+                    <form method="post" class="text-center ">
+                        {% csrf_token %}
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="bed_number" placeholder="Bed number..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="room_number" placeholder="Room number..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="floor" placeholder="Floor number..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="block" placeholder="Block name..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="gender" placeholder="Gender..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="course" placeholder="Course year..." class="form-control text-center">
+                        </div>
+                        <div class="col-md" style="padding: 15px;">
+                            <input type="text" name="faculty" placeholder="Faculty name..." class="form-control text-center">
+                        </div>
+                        <input name="button" class="btn login_btn btn-danger rounded-pill text-center " type="submit" value="Add">
+                        <input name="button" class="btn login_btn btn-danger rounded-pill text-center " type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+</div>
+{% endblock %}
