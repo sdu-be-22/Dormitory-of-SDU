@@ -1,12 +1,12 @@
-#SDU Dormitory
+# SDU Dormitory
 Website for use by SDU students.
-##Description of project:
+## Description of project:
 SDU Dormitory's website is the site where entrant can find the main information 
 about the services and advantages of our Dormitory. 
 
 We made this website by using Django/Html/Bootstrap
 
-##MENTOR:
+## MENTOR:
 - Bissenbay Dauletbayev - b.dauletbayev@sdu.edu.kz
 
 ##TEAM MEMBERS: 
